@@ -4,13 +4,23 @@
         <TargetFramework>netstandard2.1</TargetFramework>
         <AssemblyName>EnhancedLockpicker</AssemblyName>
         <Description>Mod for Lethal Company, that enhance Lockpicker</Description>
-        <Version>1.0.0</Version>
+        <Version>1.1.0</Version>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
         <LangVersion>latest</LangVersion>
         <Configurations>Release</Configurations>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'" />
+
+    <ItemGroup>
+      <None Remove="Assets\enhancedlockpicker" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Include="Assets\enhancedlockpicker">
+        <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      </EmbeddedResource>
+    </ItemGroup>
 
     <ItemGroup>
         <PackageReference Include="BepInEx.Analyzers" Version="1.*" PrivateAssets="all" />

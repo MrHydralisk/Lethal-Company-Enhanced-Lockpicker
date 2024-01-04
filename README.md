@@ -3,9 +3,10 @@ Mod for Lethal Company, that enhance Lockpicker.
 
 Ever felt like there is not much reasons to get Lockpicker? Then this mod might help you find usage for it.
 
-Lockpicker now doesn't make you wait for ages to open the door.
+Lockpicker now doesn't make you wait for ages to open the door. Unlocked doors can be jammed back to locked state by Loackpicker.
 # Features
 * Lockpicker takes 10 second to open door. Time adjustable in Config.
+* Lockpicker can jam unlocked doors to locked state.
 
 All features can be enabled/disabled in Config.
 # Client/Server
