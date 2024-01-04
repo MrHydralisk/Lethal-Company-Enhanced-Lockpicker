@@ -1,12 +1,12 @@
 ﻿using HarmonyLib;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace EnhancedLockpicker
 {
@@ -89,9 +89,8 @@ namespace EnhancedLockpicker
                 return; 
             }
             DoorLock component = raycastHit.transform.GetComponent<DoorLock>();
-            if (component != null && !component.isLocked)
+            if (component != null && !component.isLocked && (component.GetComponent<NavMeshObstacle>()?.enabled ?? false))
             {
-                component.SetDoorAsOpen(false);
                 bool placeOnLockPicker1 = true;
                 Vector3 placePos;
                 if (Vector3.Distance(component.lockPickerPosition.position, __instance.playerHeldBy.transform.position) < Vector3.Distance(component.lockPickerPosition2.position, __instance.transform.position))
@@ -129,7 +128,7 @@ namespace EnhancedLockpicker
                 doorTrigger.disabledHoverTip = $"Jamming lock: {(int)__instance.lockPickTimeLeft} sec.";
                 if (__instance.lockPickTimeLeft < 0f)
                 {
-                    __instance.LockDoor();
+                    EnhancedLockpickerNetworkHandler.instance.LockDoorRpc(__instance);
                 }
             }
         }

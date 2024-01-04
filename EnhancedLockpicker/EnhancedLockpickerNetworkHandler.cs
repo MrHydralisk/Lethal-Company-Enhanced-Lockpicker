@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using Unity.Netcode;
-using UnityEngine;
+﻿using Unity.Netcode;
 
 namespace EnhancedLockpicker
 {
@@ -63,6 +61,30 @@ namespace EnhancedLockpicker
             {
                 EnhancedLockpickerComp eLockpicker = networkObject2.gameObject.GetComponent<EnhancedLockpickerComp>();
                 eLockpicker.FinishPickingLock();
+            }
+        }
+
+        public void LockDoorRpc(DoorLock doorLock)
+        {
+            if (IsHost || IsServer)
+            {
+                LockDoorClientRpc(doorLock.NetworkObject);
+            }
+        }
+
+        [ServerRpc(RequireOwnership = false)]
+        public void LockDoorServerRpc(NetworkObjectReference doorLockObject)
+        {
+            LockDoorClientRpc(doorLockObject);
+        }
+
+        [ClientRpc]
+        public void LockDoorClientRpc(NetworkObjectReference doorLockObject)
+        {
+            if (doorLockObject.TryGet(out var networkObject))
+            {
+                DoorLock doorLock = networkObject.gameObject.GetComponentInChildren<DoorLock>();
+                doorLock.LockDoor();
             }
         }
     }

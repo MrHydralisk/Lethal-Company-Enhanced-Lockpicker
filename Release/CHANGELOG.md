@@ -1,3 +1,8 @@
+**1.1.1**
+- Additional synchronization for locking door.
+- No longer can jam open door.
+- Icon update.
+
 **1.1.0**
 - Lockpicker now able to jam (lock) doors.
 
