@@ -1,3 +1,6 @@
+**1.1.2**
+- Description Updated
+
 **1.1.1**
 - Additional synchronization for locking door.
 - No longer can jam open door.
