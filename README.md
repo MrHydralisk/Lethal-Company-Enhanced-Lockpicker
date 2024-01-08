@@ -16,3 +16,4 @@ It client-side, but intended to be installed by all players in lobby.
 # My Other Mods
 * [Enhanced Radar Booster](https://github.com/MrHydralisk/Lethal-Company-Enhanced-Radar-Booster)
 * [Save Our Loot](https://github.com/MrHydralisk/Lethal-Company-Save-Our-Loot)
+* [Majority Vote](https://github.com/MrHydralisk/Lethal-Company-Majority-Vote)
