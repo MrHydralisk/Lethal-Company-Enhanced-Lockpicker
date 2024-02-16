@@ -1,3 +1,6 @@
+**1.1.4**
+- Fixed Lockpicker positioning from wrong door side
+
 **1.1.2-1.1.3**
 - Description Updated
 

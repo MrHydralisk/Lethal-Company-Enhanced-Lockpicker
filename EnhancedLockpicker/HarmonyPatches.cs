@@ -93,7 +93,7 @@ namespace EnhancedLockpicker
             {
                 bool placeOnLockPicker1 = true;
                 Vector3 placePos;
-                if (Vector3.Distance(component.lockPickerPosition.position, __instance.playerHeldBy.transform.position) < Vector3.Distance(component.lockPickerPosition2.position, __instance.transform.position))
+                if (Vector3.Distance(component.lockPickerPosition.position, __instance.playerHeldBy.transform.position) < Vector3.Distance(component.lockPickerPosition2.position, __instance.playerHeldBy.transform.position))
                 {
                     placeOnLockPicker1 = true;
                     placePos = component.lockPickerPosition.localPosition;
