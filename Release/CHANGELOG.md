@@ -1,3 +1,6 @@
+**1.1.5**
+- Lockpicker properly fall of the door, when enemy opening door during jamming
+
 **1.1.4**
 - Fixed Lockpicker positioning from wrong door side
 

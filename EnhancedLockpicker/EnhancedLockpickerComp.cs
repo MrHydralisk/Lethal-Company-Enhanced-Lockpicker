@@ -58,7 +58,7 @@ namespace EnhancedLockpicker
 
         public void Update()
         {
-            if ((isLocking && LP.currentlyPickingDoor != null && LP.currentlyPickingDoor.isLocked) || (LP.currentlyPickingDoor != null && HarmonyPatches.GetDoorOpened(LP.currentlyPickingDoor)))
+            if ((isLocking && LP.currentlyPickingDoor != null && (LP.currentlyPickingDoor.isLocked || HarmonyPatches.GetDoorOpened(LP.currentlyPickingDoor))))
             {
                 EnhancedLockpickerNetworkHandler.instance.FinishPickingRpc(this);
             }
