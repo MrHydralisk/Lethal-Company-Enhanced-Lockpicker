@@ -119,16 +119,30 @@ namespace EnhancedLockpicker
             }
         }
 
+        public static bool GetDoorOpened(DoorLock doorScript)
+        {
+            return (bool)typeof(DoorLock).GetField("isDoorOpened", BindingFlags.Instance | BindingFlags.NonPublic).GetValue(doorScript);
+        }
+
         public static void DL_Update_Postfix(DoorLock __instance)
         {
             if (!__instance.isLocked && __instance.isPickingLock)
             {
+                bool isDoorOpened = GetDoorOpened(__instance);
                 InteractTrigger doorTrigger = (InteractTrigger)DoorTrigger.GetValue(__instance);
                 __instance.lockPickTimeLeft -= Time.deltaTime;
                 doorTrigger.disabledHoverTip = $"Jamming lock: {(int)__instance.lockPickTimeLeft} sec.";
                 if (__instance.lockPickTimeLeft < 0f)
                 {
-                    EnhancedLockpickerNetworkHandler.instance.LockDoorRpc(__instance);
+                    if(!isDoorOpened)
+                    {
+                        EnhancedLockpickerNetworkHandler.instance.LockDoorRpc(__instance);
+                    }
+                    else
+                    {
+                        doorTrigger.interactable = true;
+                        __instance.UnlockDoorServerRpc();
+                    }
                 }
             }
         }
