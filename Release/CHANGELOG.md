@@ -1,4 +1,4 @@
-**1.1.5**
+**1.1.5-1.1.6**
 - Lockpicker properly fall of the door, when enemy opening door during jamming
 
 **1.1.4**

@@ -129,6 +129,10 @@ namespace EnhancedLockpicker
             if (!__instance.isLocked && __instance.isPickingLock)
             {
                 bool isDoorOpened = GetDoorOpened(__instance);
+                if (isDoorOpened)
+                {
+                    __instance.lockPickTimeLeft = -1;
+                }
                 InteractTrigger doorTrigger = (InteractTrigger)DoorTrigger.GetValue(__instance);
                 __instance.lockPickTimeLeft -= Time.deltaTime;
                 doorTrigger.disabledHoverTip = $"Jamming lock: {(int)__instance.lockPickTimeLeft} sec.";
