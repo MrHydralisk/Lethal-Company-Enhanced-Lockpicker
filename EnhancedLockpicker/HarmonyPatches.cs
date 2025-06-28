@@ -15,7 +15,7 @@ namespace EnhancedLockpicker
         private static readonly Type patchType;
 
         private static FieldInfo RayHit = typeof(LockPicker).GetField("hit", BindingFlags.NonPublic | BindingFlags.Instance);
-        private static FieldInfo DoorTrigger = typeof(DoorLock).GetField("doorTrigger", BindingFlags.NonPublic | BindingFlags.Instance);
+        private static FieldInfo DoorTrigger = typeof(DoorLock).GetField("doorTrigger", BindingFlags.Public | BindingFlags.Instance);
 
         static HarmonyPatches()
         {
@@ -51,7 +51,7 @@ namespace EnhancedLockpicker
         public static IEnumerable<CodeInstruction> DL_LockDoor_Transpiler(IEnumerable<CodeInstruction> instructions)
         {
             List<CodeInstruction> codes = new List<CodeInstruction>(instructions);
-            codes.Insert(7, new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(HarmonyPatches), "ChangeLockDoorTimeToLockPick"))); 
+            codes.Insert(codes.FindIndex((cd) => cd.ToString().Contains("timeToHold")), new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(HarmonyPatches), "ChangeLockDoorTimeToLockPick"))); 
             return codes.AsEnumerable();
         }
 

@@ -1,3 +1,6 @@
+**1.1.7**
+- Rebuild to fit files v72.
+
 **1.1.5-1.1.6**
 - Lockpicker properly fall of the door, when enemy opening door during jamming
 
